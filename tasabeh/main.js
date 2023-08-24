@@ -67,13 +67,8 @@ async function createContent() {
     countercontainer.setAttribute("class", "countercontainer");
     counter.setAttribute("class", `counter`);
     // check if there is data in localStorge 
-    if (window.localStorage.length > 0) {
-        data_count = JSON.parse(window.localStorage.getItem("data-count"))
-        counterSpan.innerHTML = `${data_count[i].count}`;
-      }
-      else {
-        counterSpan.innerHTML = `${texts[i].count}`;     
-    }  
+      
+    counterSpan.innerHTML = `${texts[i].count}`;     
     counter.appendChild(counterSpan);
     countercontainer.appendChild(counter);
     content.appendChild(countercontainer);
