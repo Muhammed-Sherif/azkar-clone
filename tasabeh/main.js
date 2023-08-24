@@ -181,7 +181,7 @@ async function plus_minus() {
   let minus = document.querySelectorAll(".minus") 
   minus.forEach((minus, index) => {
     minus.addEventListener("click", () => {
-      counterSpan.forEach((counterSpan, i) => {
+      counterSpans.forEach((counterSpan, i) => {
         if (i === index) {
             counterSpan.innerHTML = +counterSpan.innerHTML+1;
         }
