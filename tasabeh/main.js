@@ -136,13 +136,6 @@ async function createContent() {
       
  }
  // save data into localStorge
- function save_data_into_localStorge (elements) {
-   let data_count = [];
-    elements.forEach((element)=>{
-      data_count.push({count:`${element.innerHTML}`});
-      window.localStorage.setItem("data-count",JSON.stringify(data_count))
-    })
- }
 async function plus_minus() {
   await createContent();
   let Count = document.querySelectorAll(".counter");
