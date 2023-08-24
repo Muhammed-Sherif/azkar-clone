@@ -66,14 +66,7 @@ async function createContent() {
     counterSpan.setAttribute("class", "counterSpan");
     countercontainer.setAttribute("class", "countercontainer");
     counter.setAttribute("class", `counter`);
-    // check if there is data in localStorge 
-    if (window.localStorage.length > 0) {
-        data_count = JSON.parse(window.localStorage.getItem("data-count"))
-        counterSpan.innerHTML = `${data_count[i].count}`;
-      }
-      else {
-        counterSpan.innerHTML = `${texts[i].count}`;     
-    }  
+    counterSpan.innerHTML = `${texts[i].count}`;       
     counter.appendChild(counterSpan);
     countercontainer.appendChild(counter);
     content.appendChild(countercontainer);
@@ -141,13 +134,6 @@ async function createContent() {
       
  }
  // save data into localStorge
- function save_data_into_localStorge (elements) {
-   let data_count = [];
-    elements.forEach((element)=>{
-      data_count.push({count:`${element.innerHTML}`});
-      window.localStorage.setItem("data-count",JSON.stringify(data_count))
-    })
- }
 async function plus_minus() {
   await createContent();
   let Count = document.querySelectorAll(".counter");
@@ -158,7 +144,6 @@ async function plus_minus() {
         if (i === index) {
           if (counterSpan.innerHTML>0) {
             counterSpan.innerHTML -=1;
-            save_data_into_localStorge(counterSpans)
             // run function which send data to localStorge
             // let content_box = document.querySelectorAll(".content-box")
             // content_box.forEach((element,ind)=>{
