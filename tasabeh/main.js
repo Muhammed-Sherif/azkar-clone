@@ -146,7 +146,6 @@ async function plus_minus() {
         if (i === index) {
           if (counterSpan.innerHTML>0) {
             counterSpan.innerHTML -=1;
-            save_data_into_localStorge(counterSpans)
             // run function which send data to localStorge
             // let content_box = document.querySelectorAll(".content-box")
             // content_box.forEach((element,ind)=>{
