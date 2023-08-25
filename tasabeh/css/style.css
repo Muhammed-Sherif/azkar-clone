@@ -27,7 +27,6 @@ header {
   background-color: var(--main-color);
   display: flex;
   align-items: center;
-  position: static;
   width: 100%;
   z-index: 100;
   top: 0;
@@ -175,7 +174,6 @@ span.material-symbols-outlined.left-animation:hover   {
   flex-wrap: wrap;
   align-items: center;
   padding: 10px;
-  margin: 30px auto;
 }
 
 .content-box {
