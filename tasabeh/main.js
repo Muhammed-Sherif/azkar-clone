@@ -252,17 +252,13 @@ else{
 // let scroll_percente = document.documentElement.scrollHeight - document.documentElement.clientHeight ;
 // console.log(scroll_percente)
 let header = document.querySelector("header")
+let landing_area = document.querySelector(".landing-area")
+landing_area.style.margin = `${header.clientHeight+30}px auto`
 window.addEventListener("scroll",()=>{
   if (window.scrollY > header.clientHeight) {
-    header.style.position="fixed"
-    header.style.backgroundColor = "#15acdf";
     header.style.boxShadow = "0px 0 12px 4px #0000006b"
-    // header.style.display = "flex"
   }
   else {
-    header.style.position="static"
-    // header.style.backgroundColor = "transparent";
     header.style.boxShadow = "none"
-    // header.style.display = "none";
   }
 })
