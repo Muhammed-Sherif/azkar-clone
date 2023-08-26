@@ -258,16 +258,13 @@ more_li.forEach((li,index)=>{
 // console.log(scroll_percente)
 let header= document.querySelector("header")
 let landing_area = document.querySelector(".landing-area")
-let links = document.querySelector(".links") 
 landing_area.style.margin = `${header.clientHeight+30}px auto 30px`
 window.addEventListener("scroll",()=>{
   if (window.scrollY > header.clientHeight) {
     header.style.boxShadow = "0px 0 12px 4px #0000006b"
-    links.style.backgroundColor = "#ffffffcc"
   }
   else {
     header.style.boxShadow = "none"  
-    links.style.backgroundColor = "var(--minor-color)"
   }
 })
 zekr_links.style.top = `${header.clientHeight/2+20}px`
