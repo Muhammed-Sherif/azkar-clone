@@ -67,11 +67,16 @@ async function createContent() {
     countercontainer.setAttribute("class", "countercontainer");
     counter.setAttribute("class", `counter`);
     // check if there is data in localStorge 
-        counterSpan.innerHTML = `${texts[i].count}`;     
-  
+     counterSpan.innerHTML = `${texts[i].count}`;     
     counter.appendChild(counterSpan);
     countercontainer.appendChild(counter);
     content.appendChild(countercontainer);
+    let counters = document.querySelectorAll(".counter")
+    counters.forEach((counter)=>{
+      counter.addEventListener("click",()=>{
+        counter.style.animation = "color-animation-counter 1s linear  1 alternate both;"
+      })
+    })
     // adding resetIcon in counter
     let resetIcon = document.createElement("div")
     resetIcon.setAttribute("class","reset")
@@ -135,31 +140,31 @@ async function createContent() {
       })
       
  }
- 
-async function plus_minus() {
-  await createContent();
-  let Count = document.querySelectorAll(".counter");
-  let counterSpans = document.querySelectorAll(".counterSpan");
-  Count.forEach((count, index) => {
-    count.addEventListener("click", () => {
-      counterSpans.forEach((counterSpan, i) => {
-        if (i === index) {
-          if (counterSpan.innerHTML>0) {
-            counterSpan.innerHTML -=1;
-            // run function which send data to localStorge
-            // let content_box = document.querySelectorAll(".content-box")
-            // content_box.forEach((element,ind)=>{
-              // if (ind===i) {
-                // let content_box_after = window.getComputedStyle(element,"::after")
-              // content_box_after.width = "10px"
-              // console.log(content_box_after)
-              // content_box_after.width = `${100-((counterSpan.innerHTML/texts[ind].count)*100)}%`
-              // }
-            // })
-
-          //   if (counterSpan.innerHTML===0) {
-          //   count.style.backgroundColor = "#00bfff54"
-          //  }
+ async function plus_minus() {
+   await createContent();
+   let Count = document.querySelectorAll(".counter");
+   let counterSpans = document.querySelectorAll(".counterSpan");
+   Count.forEach((count, index) => {
+     count.addEventListener("click", () => {
+       counterSpans.forEach((counterSpan, i) => {
+         if (i === index) {
+           if (counterSpan.innerHTML>0) {
+             counterSpan.innerHTML -=1;
+             if (counterSpan.innerHTML==0) {
+               console.log(counterSpan.innerHTML)
+               count.style.backgroundColor = "var(--minor-color)"
+               count.style.animationName = "color-animation-counter"
+               setTimeout(()=>{
+                 count.style.animationName = "none"
+               },500)
+             }
+             else {
+               count.style.backgroundColor = "#00bfffda"
+               count.style.animationName = "color-animation-counter"
+              setTimeout(()=>{
+                count.style.animationName = "none"
+              },1000)
+             }
           }
         }
       });
@@ -236,7 +241,7 @@ else{
 })
 }
 
-  more_li.forEach((li,index)=>{
+more_li.forEach((li,index)=>{
     li.addEventListener("click",()=>{
       add_active_and_check(divPart,index,li.classList[1])
     })  
@@ -251,14 +256,19 @@ else{
 // let scroll_container = document.querySelector(".scroll-progress");
 // let scroll_percente = document.documentElement.scrollHeight - document.documentElement.clientHeight ;
 // console.log(scroll_percente)
-let header = document.querySelector("header")
+let header= document.querySelector("header")
 let landing_area = document.querySelector(".landing-area")
-landing_area.style.margin = `${header.clientHeight+30}px auto`
+let links = document.querySelector(".links") 
+landing_area.style.margin = `${header.clientHeight+30}px auto 30px`
 window.addEventListener("scroll",()=>{
   if (window.scrollY > header.clientHeight) {
     header.style.boxShadow = "0px 0 12px 4px #0000006b"
+    links.style.backgroundColor = "#ffffffcc"
   }
   else {
-    header.style.boxShadow = "none"
+    header.style.boxShadow = "none"  
+    links.style.backgroundColor = "var(--minor-color)"
   }
 })
+zekr_links.style.top = `${header.clientHeight/2+20}px`
+console.log(header.clientHeight)
