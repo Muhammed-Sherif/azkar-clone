@@ -91,6 +91,8 @@ async function createContent() {
             counterSpans.forEach((span,index)=>{
               if (i===index) {
                 span.innerHTML=texts[index].count
+                let counter = reset.previousElementSibling 
+                counter.style.backgroundColor = "#00bfffda"
               }
             })
           })
