@@ -92,6 +92,8 @@ async function createContent() {
             counterSpans.forEach((span,index)=>{
               if (i===index) {
                 span.innerHTML=texts[index].count
+                let counter = reset.previousElementSibling 
+                counter.style.backgroundColor = "#00bfffda"
               }
             })
           })
@@ -226,7 +228,6 @@ function add_active_and_check(div,index,more_back_class) {
         ele.nextElementSibling.setAttribute("data-active","active")
       }
     }    
-    // }
     else if (more_back_class==="back") {
       // remember count of back 2 and the count of div 3
       if (index+1===i) {
@@ -254,11 +255,6 @@ more_li.forEach((li,index)=>{
     back.addEventListener("click",()=>{
       add_active_and_check(divPart,index,back.classList[1])  
     })})
-
-// add scroll progress 
-// let scroll_container = document.querySelector(".scroll-progress");
-// let scroll_percente = document.documentElement.scrollHeight - document.documentElement.clientHeight ;
-// console.log(scroll_percente)
 let header= document.querySelector("header")
 let landing_area = document.querySelector(".landing-area")
 landing_area.style.margin = `${header.clientHeight+30}px auto 30px`
@@ -270,5 +266,5 @@ window.addEventListener("scroll",()=>{
     header.style.boxShadow = "none"  
   }
 })
-zekr_links.style.top = `${header.clientHeight/2+20}px`
+zekr_links.style.top = `${header.clientHeight/2+22}px`
 console.log(header.clientHeight)
