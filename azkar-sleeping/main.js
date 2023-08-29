@@ -92,6 +92,8 @@ async function createContent() {
             counterSpans.forEach((span,index)=>{
               if (i===index) {
                 span.innerHTML=texts[index].count
+                let counter = reset.previousElementSibling 
+                counter.style.backgroundColor = "#00bfffda"
               }
             })
           })
@@ -254,11 +256,6 @@ more_li.forEach((li,index)=>{
     back.addEventListener("click",()=>{
       add_active_and_check(divPart,index,back.classList[1])  
     })})
-
-// add scroll progress 
-// let scroll_container = document.querySelector(".scroll-progress");
-// let scroll_percente = document.documentElement.scrollHeight - document.documentElement.clientHeight ;
-// console.log(scroll_percente)
 let header= document.querySelector("header")
 let landing_area = document.querySelector(".landing-area")
 let links = document.querySelector(".links") 
