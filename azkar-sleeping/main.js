@@ -176,7 +176,9 @@ async function createContent() {
     minus.addEventListener("click", () => {
       counterSpans.forEach((counterSpan, i) => {
         if (i === index) {
-            counterSpan.innerHTML = +counterSpan.innerHTML+1;
+              let counter = minus.previousElementSibling.previousElementSibling 
+              counter.style.backgroundColor = "#00bfffda"counterSpan.innerHTML = +counterSpan.innerHTML+1;
+            
         }
       });
     });
