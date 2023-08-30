@@ -17,7 +17,7 @@ async function createContent() {
   let titleSpan = document.createElement("span");
   titleSpan.setAttribute("class", "titl");
   titleSpan.innerHTML = "تسابيح";
-  title.appendChild(titleSpan);
+   title.appendChild(titleSpan);
   section.appendChild(title);
   for (let i = 0; i < texts.length; i++) {
     // add div in section
@@ -94,10 +94,12 @@ async function createContent() {
                 span.innerHTML=texts[index].count
                 let counter = reset.previousElementSibling 
                 counter.style.backgroundColor = "#00bfffda"
+              }
             })
           })
           
         });
+        // adding minusIcon in counter
         let minusIcon = document.createElement("div")
         minusIcon.setAttribute("class","minus")
         minusIcon.innerHTML=`<i class="fa-solid fa-minus fa-2xs"></i>`
@@ -270,7 +272,7 @@ window.addEventListener("scroll",()=>{
     header.style.boxShadow = "none";
   }
 })
-zekr_links.style.top = `${header.clientHeight/2+21}px`
+zekr_links.style.top = `${header.clientHeight/2+22}px`
 let zekr_link = document.querySelector(".zekr-link")
 let azkar_links = document.querySelector(".azkar-links")
     zekr_link.addEventListener("click",()=>{
