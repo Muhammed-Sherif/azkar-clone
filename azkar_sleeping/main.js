@@ -94,29 +94,10 @@ async function createContent() {
                 span.innerHTML=texts[index].count
                 let counter = reset.previousElementSibling 
                 counter.style.backgroundColor = "#00bfffda"
-                // if (reset.classList[1]==="rotata") {
-                //   reset.classList[1]= "not-rotate"
-                //   console.log(classli)
-                // }
-                // else{
-                //   reset.classList[1]= "rotate"
-                // }
-                // reset.style.transition = ".5s"
-                // if (reset.style.transform ==="rotate(360deg)") {
-                //   console.log(reset.style.transform)
-                //   reset.style.transform = "rotate(0deg)";
-                // }
-                // else {
-                //   reset.style.transform = "rotate(360deg)";
-                //   // console.log("fa")
-                //   // console.log(reset.style.transform)
-                // }
-              }
             })
           })
           
         });
-        // adding minusIcon in counter
         let minusIcon = document.createElement("div")
         minusIcon.setAttribute("class","minus")
         minusIcon.innerHTML=`<i class="fa-solid fa-minus fa-2xs"></i>`
@@ -218,7 +199,7 @@ zekr_links.addEventListener("click",()=>{
   zekr_links.style.display="flex";
 })
 // get all link container 
-let main_li =document.querySelectorAll(".main-li")
+let main_li =document.querySelectorAll(".main-li-out")
 let divPart1 =document.querySelector(".part1") 
 let divPart =document.querySelectorAll(".part") 
 let divPart2 =document.querySelector(".part2") 
@@ -265,9 +246,9 @@ else{
 }
 
 more_li.forEach((li,index)=>{
-    li.addEventListener("click",()=>{
-      add_active_and_check(divPart,index,li.classList[1])
-    })  
+  li.addEventListener("click",()=>{
+    add_active_and_check(divPart,index,li.classList[1])
+  })  
   }
   )
   back_li.forEach((back,index)=>{
@@ -275,14 +256,12 @@ more_li.forEach((li,index)=>{
       add_active_and_check(divPart,index,back.classList[1])  
     })})
 
-// add scroll progress 
-// let scroll_container = document.querySelector(".scroll-progress");
-// let scroll_percente = document.documentElement.scrollHeight - document.documentElement.clientHeight ;
-// console.log(scroll_percente)
 let header= document.querySelector("header")
 let landing_area = document.querySelector(".landing-area")
+let links_area = document.querySelector(".links-area")
 let links = document.querySelector(".links") 
 landing_area.style.margin = `${header.clientHeight+30}px auto 30px`
+links_area.style.top = `${header.clientHeight}px`
 window.addEventListener("scroll",()=>{
   if (window.scrollY > header.clientHeight) {
     header.style.boxShadow = "0px 0 12px 4px #0000006b"
@@ -291,5 +270,25 @@ window.addEventListener("scroll",()=>{
     header.style.boxShadow = "none";
   }
 })
-zekr_links.style.top = `${header.clientHeight/2+22}px`
-console.log(header.clientHeight)
+zekr_links.style.top = `${header.clientHeight/2+21}px`
+let zekr_link = document.querySelector(".zekr-link")
+let azkar_links = document.querySelector(".azkar-links")
+    zekr_link.addEventListener("click",()=>{
+        if (azkar_links.style.display === "none") {
+          azkar_links.style.display = "block";
+          links_area.style.height = "90vh"
+        } else {
+          azkar_links.style.display = "none";
+          links_area.style.height = "fit-content"
+        }
+      }) 
+      let bar_icon = document.querySelector(".bar-icon")
+      bar_icon.addEventListener("click",()=>{
+        azkar_links.style.display = "none";
+        if (links_area.style.display === "block") {
+    links_area.style.display = "none"
+  }
+  else {
+    links_area.style.display = "block"
+  }
+})
