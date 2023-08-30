@@ -2,7 +2,7 @@ let texts = [];
 let data_count =[];
 async function fetchData() {
   try {
-    let data = await fetch("azkar_sleeping.json");
+    let data = await fetch("tasabeh.json");
     texts = await data.json();
   } catch (error) {
     console.log(`reason is ${error}`);
@@ -16,7 +16,7 @@ async function createContent() {
   title.setAttribute("class", "title");
   let titleSpan = document.createElement("span");
   titleSpan.setAttribute("class", "titl");
-  titleSpan.innerHTML = "اذكار النوم";
+  titleSpan.innerHTML = "تسابيح";
   title.appendChild(titleSpan);
   section.appendChild(title);
   for (let i = 0; i < texts.length; i++) {
