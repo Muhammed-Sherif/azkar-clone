@@ -270,7 +270,7 @@ window.addEventListener("scroll",()=>{
     header.style.boxShadow = "none";
   }
 })
-zekr_links.style.top = `${header.clientHeight/2+22}px`
+zekr_links.style.top = `${header.clientHeight/2+21}px`
 let zekr_link = document.querySelector(".zekr-link")
 let azkar_links = document.querySelector(".azkar-links")
     zekr_link.addEventListener("click",()=>{
