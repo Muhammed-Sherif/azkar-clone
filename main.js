@@ -94,29 +94,10 @@ async function createContent() {
                 span.innerHTML=texts[index].count
                 let counter = reset.previousElementSibling 
                 counter.style.backgroundColor = "#00bfffda"
-                // if (reset.classList[1]==="rotata") {
-                //   reset.classList[1]= "not-rotate"
-                //   console.log(classli)
-                // }
-                // else{
-                //   reset.classList[1]= "rotate"
-                // }
-                // reset.style.transition = ".5s"
-                // if (reset.style.transform ==="rotate(360deg)") {
-                //   console.log(reset.style.transform)
-                //   reset.style.transform = "rotate(0deg)";
-                // }
-                // else {
-                //   reset.style.transform = "rotate(360deg)";
-                //   // console.log("fa")
-                //   // console.log(reset.style.transform)
-                // }
-              }
             })
           })
           
         });
-        // adding minusIcon in counter
         let minusIcon = document.createElement("div")
         minusIcon.setAttribute("class","minus")
         minusIcon.innerHTML=`<i class="fa-solid fa-minus fa-2xs"></i>`
@@ -275,17 +256,12 @@ more_li.forEach((li,index)=>{
       add_active_and_check(divPart,index,back.classList[1])  
     })})
 
-// add scroll progress 
-// let scroll_container = document.querySelector(".scroll-progress");
-// let scroll_percente = document.documentElement.scrollHeight - document.documentElement.clientHeight ;
-// console.log(scroll_percente)
 let header= document.querySelector("header")
 let landing_area = document.querySelector(".landing-area")
 let links_area = document.querySelector(".links-area")
 let links = document.querySelector(".links") 
 landing_area.style.margin = `${header.clientHeight+30}px auto 30px`
 links_area.style.top = `${header.clientHeight}px`
-// links_area.style.height = `${window.clientHeight-header.clientHeight}px`
 window.addEventListener("scroll",()=>{
   if (window.scrollY > header.clientHeight) {
     header.style.boxShadow = "0px 0 12px 4px #0000006b"
@@ -294,7 +270,7 @@ window.addEventListener("scroll",()=>{
     header.style.boxShadow = "none";
   }
 })
-zekr_links.style.top = `${header.clientHeight/2+21}px`
+zekr_links.style.top = `${header.clientHeight/2+22}px`
 let zekr_link = document.querySelector(".zekr-link")
 let azkar_links = document.querySelector(".azkar-links")
     zekr_link.addEventListener("click",()=>{
