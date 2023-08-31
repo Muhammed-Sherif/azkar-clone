@@ -117,7 +117,10 @@ async function createContent() {
           get_data_count()
         })
       }) 
-      let date = new Date();
+      let body = document.querySelector("body")
+      let footer_container =document.createElement("footer")
+      body.appendChild(footer_container)
+    let date = new Date();
     let footer = document.querySelector("footer");
     let span = document.createElement("span");
     let footer_text = document.createTextNode(
