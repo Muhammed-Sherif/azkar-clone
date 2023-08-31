@@ -16,7 +16,7 @@ async function createContent() {
   let titleSpan = document.createElement("span");
   titleSpan.setAttribute("class", "titl");
   titleSpan.innerHTML = "اذكار بعد الصلاة";
-   title.appendChild(titleSpan);
+  title.appendChild(titleSpan);
   section.appendChild(title);
   for (let i = 0; i < texts.length; i++) {
     // add div in section
@@ -66,11 +66,18 @@ async function createContent() {
     counterSpan.setAttribute("class", "counterSpan");
     countercontainer.setAttribute("class", "countercontainer");
     counter.setAttribute("class", `counter`);
-    // check if there is data in localStorge 
-     counterSpan.innerHTML = `${texts[i].count}`;     
     counter.appendChild(counterSpan);
-    countercontainer.appendChild(counter);
-    content.appendChild(countercontainer);
+  countercontainer.appendChild(counter);
+  content.appendChild(countercontainer);
+  let counterSpans = document.querySelectorAll(".counterSpan") 
+  // check if there is data in localStorge
+  if (window.sessionStorage.length>0) {
+        let data_count = JSON.parse(window.sessionStorage.getItem("count"))
+        counterSpan.innerHTML = `${data_count[i].count}`;
+      }
+      else {
+        counterSpan.innerHTML = `${texts[i].count}`;     
+      }
     let counters = document.querySelectorAll(".counter")
     counters.forEach((counter)=>{
       counter.addEventListener("click",()=>{
@@ -85,14 +92,30 @@ async function createContent() {
     mainContainer.appendChild(content);
       //get reset element 
       let reset = document.querySelectorAll(".reset") 
-      let counterSpans = document.querySelectorAll(".counterSpan") 
-        reset.forEach((reset,i) => {
+      reset.forEach((reset,i) => {
           reset.addEventListener("click", ()=>{
             counterSpans.forEach((span,index)=>{
               if (i===index) {
                 span.innerHTML=texts[index].count
                 let counter = reset.previousElementSibling 
                 counter.style.backgroundColor = "#00bfffda"
+                // if (reset.classList[1]==="rotata") {
+                  //   reset.classList[1]= "not-rotate"
+                //   console.log(classli)
+                // }
+                // else{
+                  //   reset.classList[1]= "rotate"
+                // }
+                // reset.style.transition = ".5s"
+                // if (reset.style.transform ==="rotate(360deg)") {
+                //   console.log(reset.style.transform)
+                //   reset.style.transform = "rotate(0deg)";
+                // }
+                // else {
+                //   reset.style.transform = "rotate(360deg)";
+                //   // console.log("fa")
+                //   // console.log(reset.style.transform)
+                // }
               }
             })
           })
@@ -104,6 +127,15 @@ async function createContent() {
         minusIcon.innerHTML=`<i class="fa-solid fa-minus fa-2xs"></i>`
         countercontainer.appendChild(minusIcon)
       }
+      let reset = document.querySelectorAll(".reset")
+      reset.forEach((e)=>{
+        e.addEventListener("click",()=>{
+          get_data_count()
+        })
+      }) 
+      let body = document.querySelector("body")
+      let footer_container =document.createElement("footer")
+      body.appendChild(footer_container)
     let date = new Date();
     let footer = document.querySelector("footer");
     let span = document.createElement("span");
@@ -142,6 +174,16 @@ async function createContent() {
       })
       
  }
+        function get_data_count() {
+          let counterSpans = document.querySelectorAll(".counterSpan");
+          data_count = []
+          window.sessionStorage.clear()
+          counterSpans.forEach((span)=>{
+            data_count.push({"count":`${span.innerHTML}`})
+            window.sessionStorage.setItem("count",`${JSON.stringify(data_count)}`)
+          })
+          console.log(window.sessionStorage.getItem("count"))
+        }
  async function plus_minus() {
    await createContent();
    let Count = document.querySelectorAll(".counter");
@@ -152,8 +194,8 @@ async function createContent() {
          if (i === index) {
            if (counterSpan.innerHTML>0) {
              counterSpan.innerHTML -=1;
+              get_data_count()
              if (counterSpan.innerHTML==0) {
-               console.log(counterSpan.innerHTML)
                count.style.backgroundColor = "var(--minor-color)"
                count.style.animationName = "color-animation-counter"
                setTimeout(()=>{
@@ -178,6 +220,7 @@ async function createContent() {
       counterSpans.forEach((counterSpan, i) => {
         if (i === index) {
             counterSpan.innerHTML = +counterSpan.innerHTML+1;
+              get_data_count()
               let counter = minus.previousElementSibling.previousElementSibling 
               counter.style.backgroundColor = "#00bfffda"
 
@@ -220,7 +263,7 @@ li.addEventListener("click",()=>{
 })
 function add_active_and_check(div,index,more_back_class) {
   div.forEach((el)=>{
-   el.removeAttribute("data-active")
+    el.removeAttribute("data-active")
   })
   div.forEach((ele,i)=>{
     if (more_back_class==="more") {
@@ -239,7 +282,7 @@ function add_active_and_check(div,index,more_back_class) {
 divPart.forEach((div)=>{
   if (div.getAttribute("data-active")==="active") {
     div.style.display="block";
-}
+  }
 else{
   div.style.display="none";
 }
@@ -250,19 +293,20 @@ more_li.forEach((li,index)=>{
   li.addEventListener("click",()=>{
     add_active_and_check(divPart,index,li.classList[1])
   })  
-  }
-  )
-  back_li.forEach((back,index)=>{
-    back.addEventListener("click",()=>{
-      add_active_and_check(divPart,index,back.classList[1])  
+}
+)
+back_li.forEach((back,index)=>{
+  back.addEventListener("click",()=>{
+    add_active_and_check(divPart,index,back.classList[1])  
     })})
-
-let header= document.querySelector("header")
-let landing_area = document.querySelector(".landing-area")
-let links_area = document.querySelector(".links-area")
-let links = document.querySelector(".links") 
-landing_area.style.margin = `${header.clientHeight+30}px auto 30px`
+    
+    let header= document.querySelector("header")
+    let landing_area = document.querySelector(".landing-area")
+    let links_area = document.querySelector(".links-area")
+    let links = document.querySelector(".links") 
+    landing_area.style.margin = `${header.clientHeight+30}px auto 30px`
 links_area.style.top = `${header.clientHeight}px`
+// links_area.style.height = `${window.clientHeight-header.clientHeight}px`
 window.addEventListener("scroll",()=>{
   if (window.scrollY > header.clientHeight) {
     header.style.boxShadow = "0px 0 12px 4px #0000006b"
@@ -275,7 +319,7 @@ zekr_links.style.top = `${header.clientHeight/2+22}px`
 let zekr_link = document.querySelector(".zekr-link")
 let azkar_links = document.querySelector(".azkar-links")
     zekr_link.addEventListener("click",()=>{
-        if (azkar_links.style.display === "none") {
+      if (azkar_links.style.display === "none") {
           azkar_links.style.display = "block";
           links_area.style.height = "90vh"
         } else {
@@ -287,9 +331,9 @@ let azkar_links = document.querySelector(".azkar-links")
       bar_icon.addEventListener("click",()=>{
         azkar_links.style.display = "none";
         if (links_area.style.display === "block") {
-    links_area.style.display = "none"
-  }
-  else {
+          links_area.style.display = "none"
+        }
+        else {
     links_area.style.display = "block"
   }
 })
