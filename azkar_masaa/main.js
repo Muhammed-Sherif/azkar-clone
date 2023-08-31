@@ -99,23 +99,6 @@ async function createContent() {
                 span.innerHTML=texts[index].count
                 let counter = reset.previousElementSibling 
                 counter.style.backgroundColor = "#00bfffda"
-                // if (reset.classList[1]==="rotata") {
-                  //   reset.classList[1]= "not-rotate"
-                //   console.log(classli)
-                // }
-                // else{
-                  //   reset.classList[1]= "rotate"
-                // }
-                // reset.style.transition = ".5s"
-                // if (reset.style.transform ==="rotate(360deg)") {
-                //   console.log(reset.style.transform)
-                //   reset.style.transform = "rotate(0deg)";
-                // }
-                // else {
-                //   reset.style.transform = "rotate(360deg)";
-                //   // console.log("fa")
-                //   // console.log(reset.style.transform)
-                // }
               }
             })
           })
@@ -306,7 +289,6 @@ back_li.forEach((back,index)=>{
     let links = document.querySelector(".links") 
     landing_area.style.margin = `${header.clientHeight+30}px auto 30px`
 links_area.style.top = `${header.clientHeight}px`
-// links_area.style.height = `${window.clientHeight-header.clientHeight}px`
 window.addEventListener("scroll",()=>{
   if (window.scrollY > header.clientHeight) {
     header.style.boxShadow = "0px 0 12px 4px #0000006b"
