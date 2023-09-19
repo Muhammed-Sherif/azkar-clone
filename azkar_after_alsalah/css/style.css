@@ -409,6 +409,7 @@ footer {
 }
 .contact-links i {
   cursor: pointer;
+  font-size:25px;
 }
 footer span {
   font-family: "Dancing Script";
